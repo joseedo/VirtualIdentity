@@ -76,8 +76,8 @@ onSubmit = async (event) => {
 
 
 render() {
-
- const createidentity = (
+ 
+    const createidentity = (
     <div class="ui celled grid">
     <div class="row">
         <div class="three wide column">
