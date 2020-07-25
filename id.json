@@ -1,0 +1,111 @@
+{
+    "publicdata": {
+        "firstName": "",
+        "lastName": "",
+        "nickname": "",
+        "gender": "",
+        "age": ""
+    },
+    "privatedata": {
+        "address": {
+            "streetAddress": "",
+            "city": "",
+            "state": "",
+            "postalCode": ""
+        },
+        "socialmedia": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": 22
+        },
+        "phoneNumbers": [
+            { "type": "", "number": "" }
+        ],
+        "contacts": [
+            { "contact1": {
+                "publicdata": {
+                    "firstName": "",
+                    "lastName": "",
+                    "alias": "",
+                    "gender": "",
+                    "age": ""
+                },
+                "privatedata": {
+                    "address": {
+                        "streetAddress": "",
+                        "city": "",
+                        "state": "",
+                        "postalCode": ""
+                    },
+                    "socialmedia": {
+                        "facebook": "",
+                        "twitter": "",
+                        "linkedin": "",
+                        "github": 22
+                    },
+                    "phoneNumbers": [
+                        { "type": "", "number": "" }
+                    ]
+                }
+            }
+            },
+            { "contact2": { 
+                "publicdata": {
+                    "firstName": "",
+                    "lastName": "",
+                    "alias": "",
+                    "gender": "",
+                    "age": ""
+                },
+                "privatedata": {
+                    "address": {
+                        "streetAddress": "",
+                        "city": "",
+                        "state": "",
+                        "postalCode": ""
+                    },
+                    "socialmedia": {
+                        "facebook": "",
+                        "twitter": "",
+                        "linkedin": "",
+                        "github": 22
+                    },
+                    "phoneNumbers": [
+                        { "type": "", "number": "" }
+                    ]
+                }
+            }
+            },
+            { "contactN": {
+                "publicdata": {
+                    "firstName": "",
+                    "lastName": "",
+                    "alias": "",
+                    "gender": "",
+                    "age": ""
+                },
+                "privatedata": {
+                    "address": {
+                        "streetAddress": "",
+                        "city": "",
+                        "state": "",
+                        "postalCode": ""
+                    },
+                    "socialmedia": {
+                        "facebook": "",
+                        "twitter": "",
+                        "linkedin": "",
+                        "github": 22
+                    },
+                    "phoneNumbers": [
+                        { "type": "", "number": "" }
+                    ]
+                }
+            }
+        }
+        ]
+    }
+}
+
+        
