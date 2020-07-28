@@ -4,7 +4,7 @@ import ipfs from './ipfs';
 import storehash from './storehash';
 //import createjson from './createjson'
 import {Button, Form, Table, Grid, Header, Message, Input, Segment} from 'semantic-ui-react';
-import { web } from 'webpack';
+//import { web } from 'webpack';
 
 class MainBody extends Component {
 
@@ -108,10 +108,26 @@ onSubmit = async (event) => {
     } else {
       this.setState({ sendingAccount:accounts[0] });
       console.log('Sending from Metamask account: ' + accounts[0]);
-      signMsg(this.state.address,accounts[0])
+      const msgParams = [
+        {
+          type: 'string',
+          name: 'address',
+          value: this.state.address 
+        },
+        {
+          type: 'string',
+          name: 'email',
+          value: this.state.email 
+        }
+      ]
+    //var toencrypt = signMsg(msgParams,accounts[0])
+    //this.setState({address: toencrypt})
+    this.setState({ address:signMsg(msgParams,accounts[0]) })
+    console.log("direccion:" + this.state.address)
     } 
 
-    /* function signMsg(msgParams, from) {
+
+    function signMsg(msgParams, from) {
       web3.currentProvider.sendAsync({
         method: 'eth_signTypedData',
         params: [msgParams, from],
@@ -121,7 +137,9 @@ onSubmit = async (event) => {
         if (result.error) {
           return console.error(result.error.message)
         }
-        this.setState({ address:result })
+        console.log("mensaje encriptado:" + result.result)
+        return result.result
+        //this.setState({ email:result[1] })
         const recovered = sigUtil.recoverTypedSignature({
           data: msgParams,
           sig: result.result
@@ -132,7 +150,7 @@ onSubmit = async (event) => {
           alert('Failed to verify signer, got: ' + result)
         }
       })
-    } */
+    }
   });
   //console.log('Sending from Metamask account: ' + accounts[0]);
   //obtain contract address from storehash.js
