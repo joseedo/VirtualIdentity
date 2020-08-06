@@ -77,7 +77,7 @@ function setFee(uint _fee,address _toSet) public theOwner(_toSet) returns(uint25
     
 } 
 
-function buyAccess(address _target,bytes32 _hash) public payable noAccessYet(_target) returns(bool){
+function buyAccess(address _target) public payable noAccessYet(_target) returns(bool){
       User memory userBase=dataLords[_target];
     uint userFee=userBase.fee;
     require(msg.value>=userFee,"The data owner charged more than that");
@@ -94,7 +94,7 @@ function buyAccess(address _target,bytes32 _hash) public payable noAccessYet(_ta
       recipient.transfer(msg.value);
   }
   //gives you access
-    Accessible[msg.sender][_target]=true;
+    Accessible[msg.sender][_target] =true;
     return Accessible[msg.sender][_target];
   
     
@@ -122,7 +122,7 @@ function updateHash(address _target,bytes32 newhash) public theOwner(_target){
 }
 
 //this returns the number of people who currently have data up for sale
-function getNoOfDatalords() public view returns(uint _no){
+function getNoOfDatalords() public view returns(uint){
     return allDataLords.length;
 }
 
