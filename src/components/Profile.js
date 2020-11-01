@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 // import IPFS from 'ipfs'
 // import IPFS from './web3/ipfs'
-import ProfileGet from './ProfileGet'
+//import ProfileGet from './ProfileGet'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
