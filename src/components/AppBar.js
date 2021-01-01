@@ -138,7 +138,7 @@ export default function PrimarySearchAppBar () {
     >
       <MenuItem>
         <IconButton aria-label='show 50 owned Contacts' color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
+          <Badge badgeContent={3} color='secondary'>
             <ContactsBook />
           </Badge>
         </IconButton>
@@ -197,7 +197,7 @@ export default function PrimarySearchAppBar () {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label='show 4 owned contacts' color='inherit'>
-              <Badge badgeContent={4} color='secondary'>
+              <Badge badgeContent={3} color='secondary'>
                 <ContactsBook />
               </Badge>
             </IconButton>

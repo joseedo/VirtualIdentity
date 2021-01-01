@@ -2,33 +2,38 @@
   "name": "toyanos",
   "version": "4.0.0",
   "private": true,
-<<<<<<< HEAD
-=======
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "chokidar": "^3.4.1",
+    "clsx": "latest",
+    "eth-sig-util": "^3.0.0",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
     "fs-extra": "^9.0.0",
+    "ipfs": "^0.48.1",
     "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^45.0.0",
+    "material-ui-icons": "^1.0.0-beta.36",
     "npm": "^6.14.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "latest",
+    "react-dom": "latest",
     "react-native": "^0.62.2",
     "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "latest",
     "save": "^2.4.0",
     "semantic-ui-react": "^0.88.2",
     "style-loader": "^1.2.1",
     "tsutils": "^3.17.1",
     "typescript": "^3.9.7",
     "url-loader": "^4.1.0",
-    "web3": "^1.2.11",
+    "web3": "^1.3.0",
     "web3-net": "^1.2.7",
     "web3-utils": "^1.2.11"
   },
@@ -45,9 +50,8 @@
     "css-loader": "^3.5.2",
     "nodemon": "^2.0.3",
     "semantic-ui-css": "^2.4.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^4.1.0"
   },
->>>>>>> parent of 406ef01... added signing message function
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -55,19 +59,6 @@
     "eject": "react-scripts eject",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "axios": "^0.19.2",
-    "clsx": "latest",
-    "ipfs": "^0.48.1",
-    "ipfs-api": "^26.1.2",
-    "material-ui-icons": "^1.0.0-beta.36",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "latest"
   },
   "browserslist": {
     "production": [
@@ -80,8 +71,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "webpack-cli": "^4.1.0"
   }
 }

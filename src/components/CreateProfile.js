@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 // import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -9,13 +9,15 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import React, { useState } from 'react'
+import ethereum from './web3/ethereum'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center'  
   },
   avatar: {
     margin: theme.spacing(1),
@@ -30,8 +32,100 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+
+
 export default function Create () {
-  const classes = useStyles()
+
+  const classes = useStyles();
+
+  const [sendingAccount, setSendingAccount] = useState('');
+  const [ethAddress,setEthAddress] = useState('');
+  const [user,setUser] = useState({ fullName: '', aliasName: '', email: '', phone: ''  });
+  
+  function captureChange (event) {
+    event.stopPropagation()
+    event.preventDefault()
+    setUser({ ...user, 
+              [event.target.name]: event.target.value.trim()
+            });
+  } 
+
+   async function onSubmit(event) {
+      event.preventDefault();
+      await ethereum.eth.getAccounts((error, accounts) => {
+        if (error) {
+          console.log(error)
+        } else {
+          setSendingAccount(accounts[0]);
+          console.log (user);
+          console.log('Sending from Metamask account: ' + sendingAccount);
+          const encryptedData = signMsg(JSON.stringify(user),accounts[0]);
+          const decryptedData = unsignMsg(encryptedData);
+        } 
+      });
+    }; //onSubmit 
+
+    function signMsg(userData, from) {
+
+      const msgParams = [
+        {
+        type: 'string',
+        name: 'UserData',
+        value: userData
+        }
+        ]
+      
+      web3.currentProvider.sendAsync({
+        method: 'eth_signTypedData',
+        params: [msgParams, from],
+        from: from,
+      }, function (err, result) {
+        if (err) return console.error(err)
+        if (result.error) {
+          return console.error(result.error.message)
+        }
+        console.log("signed message:" + result.result)
+        return result.result
+      })
+    }
+
+    function unsignMsg(encryptedMsg){
+      const sigUtil = require('eth-sig-util');
+        const recovered = sigUtil.recoverTypedSignature({
+          //data: msgParams,
+          sig: result.result
+        })
+        if (recovered === from ) {
+          alert('Recovered signer: ' + from)
+        } else {
+          alert('Failed to verify signer, got: ' + result)
+        }
+
+    }
+
+   /* async function sigMsg (msgParams,from) {
+
+      ethereum.currentProvider.sendAsync({
+        method: 'eth_signTypedData',
+        params: [msgParams, from],
+        from: from,
+      }, function (err, result) {
+        if (err) return console.error(err)
+        if (result.error) {
+          return console.error(result.error.message)
+        }
+      },
+      setAddress({address:result})
+      const recovered = sigUtil.recoverTypedSignature({
+        data: msgParams,
+        sig: result.result
+      })
+      if (recovered === from ) {
+        alert('Recovered signer: ' + from)
+      } else {
+        alert('Failed to verify signer, got: ' + result)
+      })
+    } */
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -43,7 +137,7 @@ export default function Create () {
         <Typography component='h1' variant='h5'>
           Create your owned Identity Profile
         </Typography>``
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={onSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={9}>
               <TextField
@@ -55,6 +149,7 @@ export default function Create () {
                 id='fullName'
                 label='Full Name'
                 autoFocus
+                onChange = {captureChange}
               />
             </Grid>
             <Grid item xs={12} sm={3}>
@@ -66,6 +161,7 @@ export default function Create () {
                 label='Alias'
                 name='aliasName'
                 autoComplete='lname'
+                onChange = {captureChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -77,6 +173,7 @@ export default function Create () {
                 label='Email Address'
                 name='email'
                 autoComplete='email'
+                onChange = {captureChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -89,6 +186,7 @@ export default function Create () {
                 type='phone'
                 id='phone'
                 autoComplete='current-password'
+                onChange = {captureChange}
               />
             </Grid>
             {/* <Grid item xs={12}>
